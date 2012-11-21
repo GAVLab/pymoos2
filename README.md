@@ -4,4 +4,12 @@ CMakeLists.txt has already been patched from r16 of pymoos.
 
 Included is the patch itself for reference in case the need arises, from william's moos-to-ros bridge
 
-Installation follows the usual steps, no frills (yet).
+## Installation
+`mkdir build && cd build`  
+`cmake .. && gksu make`  
+`cd .. && gksu python setup.py install`  
+
+## Usage
+`from pymoos.MOOSCommClient import MOOSCommClient`  
+`client = MOOSCommClient()`  
+See examples in python code for further details.
