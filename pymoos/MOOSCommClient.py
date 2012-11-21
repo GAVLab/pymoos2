@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+__version__  = '0.1'
 
 import ctypes
 import socket 
 import sys
 from time import sleep, time
 from threading import Thread, RLock
+from pprint import pprint as pp
 
 import unittest
 
@@ -25,8 +27,10 @@ def MOOSTime():
     return time()
 
 class MOOSCommClient( Thread ):
+    desired_variables = []
+    unpackCallback = pp
 
-    def __init__(self):
+    def __init__(self):    
         super( Thread, self).__init__()
         Thread.__init__(self)
 
@@ -51,7 +55,7 @@ class MOOSCommClient( Thread ):
         self.m_Outbox_Lock = RLock()
         self.m_Inbox_Lock = RLock()
 
-        print('MOOSCommClient init')
+        print('using GAVLab MOOSCommClient')
 
     def Close( self ):
         "Notify thread about closing connection"
@@ -131,17 +135,32 @@ class MOOSCommClient( Thread ):
 
         return True
 
-    def SetOnConnectCallBack( self, fn ):
-        self.onConnectCallBack = fn
+    # def SetOnConnectCallBack( self, fn ):
+    #     self.onConnectCallBack = fn
+    #     return True
+
+    def onConnectCallBack(self):
+        print('onConnect')
+        try:
+            for var in self.desired_variables:
+                self.Register(var)
+        except: # Empty
+            pass
         return True
 
     def SetOnDisconnectCallBack( self, fn ):
         self.onDisconnectCallBack = fn
         return True
 
-    def SetOnMailCallBack( self, fn ):
-        self.onMailCallBack = fn
-        return True
+    # def SetOnMailCallBack( self, fn ):
+    #     self.onMailCallBack = fn
+    #     return True
+
+    def onMailCallBack(self):
+        print('onmail')
+        messages = self.FetchRecentMail()
+        for message in messages:
+            self.unpackCallback(message)
 
     def PeekMail( self, MOOSMSG_LIST, Key, erase=False, findYoungest=False ):
 
@@ -262,9 +281,9 @@ class MOOSCommClient( Thread ):
             if self.onMailCallBack and self.m_Inbox: 
                 try:
                     self.onMailCallBack()
-                except:
-                    print("Unable to evaluate user-specified onMailCallBack")
-                    raise
+                except Exception as e:
+                    print e
+                    sys.exit(-1)
 
         # release self.m_Inbox_Lock
 
@@ -295,8 +314,9 @@ class MOOSCommClient( Thread ):
         if self.onConnectCallBack:
             try:
                 self.onConnectCallBack()
-            except:
-                print("Unable to evaluate user-specified onConnectCallBack")
+            except Exception as e:
+                print e
+                sys.exit(-1)
 
         return True
 
