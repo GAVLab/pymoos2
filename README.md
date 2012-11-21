@@ -12,7 +12,7 @@ First get MOOS
 `make`  
 `sudo make install`  
 
-Then install pymoos
+Then install pymoos  
 `git clone https://github.com/GAVLab/pymoos.git`  
 `mkdir build && cd build`  
 `cmake .. && gksu make`  
