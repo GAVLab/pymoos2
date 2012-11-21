@@ -1,4 +1,4 @@
-#!/opt/local/python
+#!/usr/bin/env python
 
 import ctypes
 import socket 
@@ -50,6 +50,8 @@ class MOOSCommClient( Thread ):
 
         self.m_Outbox_Lock = RLock()
         self.m_Inbox_Lock = RLock()
+
+        print('MOOSCommClient init')
 
     def Close( self ):
         "Notify thread about closing connection"
