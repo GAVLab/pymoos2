@@ -21,4 +21,6 @@ Then install pymoos
 ## Usage
 `from pymoos.MOOSCommClient import MOOSCommClient`  
 `client = MOOSCommClient()`  
-See examples in python code for further details.
+See examples in python code for further details.  
+  
+Most current implementation is in the repo survey_gui
