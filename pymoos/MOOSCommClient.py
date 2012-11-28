@@ -135,9 +135,9 @@ class MOOSCommClient( Thread ):
 
         return True
 
-    # def SetOnConnectCallBack( self, fn ):
-    #     self.onConnectCallBack = fn
-    #     return True
+    def SetOnConnectCallBack( self, fn ):
+        self.onConnectCallBack = fn
+        return True
 
     def onConnectCallBack(self):
         print('onConnect')
@@ -152,9 +152,9 @@ class MOOSCommClient( Thread ):
         self.onDisconnectCallBack = fn
         return True
 
-    # def SetOnMailCallBack( self, fn ):
-    #     self.onMailCallBack = fn
-    #     return True
+    def SetOnMailCallBack( self, fn ):
+        self.onMailCallBack = fn
+        return True
 
     def onMailCallBack(self):
         print('onmail')
