@@ -18,7 +18,7 @@ IF(USE_PYTHON3)
     list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/config/)
     find_package(Python32Interp REQUIRED)
     find_package(Python32Libs REQUIRED)
- 
+
     IF(NOT PYTHON3LIBS_FOUND)
         MESSAGE(FATAL_ERROR "Failed to find the python libraries")
     ENDIF()
@@ -28,9 +28,14 @@ IF(USE_PYTHON3)
 ELSE(USE_PYTHON3)
     find_package(PythonInterp REQUIRED)
     ### this was finding python libs for 3.2.3 sooo just set it manually?
-    # find_package(PythonLibs REQUIRED)
     SET(PYTHON_INCLUDE_DIRS "/usr/include/python2.7")
-    SET(PYTHON_LIBRARIES "/usr/lib/libpython2.7.so")
+
+    IF("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
+        find_package(PythonLibs REQUIRED)
+        #SET(PYTHON_LIBRARIES "/usr/lib/Python2.7")
+    ELSE("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin") # FIXME - assuming other unix (linux)
+        SET(PYTHON_LIBRARIES "/usr/lib/libpython2.7.so")
+    ENDIF("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
 
     #IF(NOT PYTHONLIBS_FOUND)
     #    MESSAGE(FATAL_ERROR "Failed to find the python libraries")
