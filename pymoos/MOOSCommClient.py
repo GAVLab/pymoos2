@@ -282,7 +282,7 @@ class MOOSCommClient( Thread ):
                 try:
                     self.onMailCallBack()
                 except Exception as e:
-                    print e
+                    print (str(e))
                     sys.exit(-1)
 
         # release self.m_Inbox_Lock
@@ -315,7 +315,7 @@ class MOOSCommClient( Thread ):
             try:
                 self.onConnectCallBack()
             except Exception as e:
-                print e
+                print(str(e))
                 sys.exit(-1)
 
         return True

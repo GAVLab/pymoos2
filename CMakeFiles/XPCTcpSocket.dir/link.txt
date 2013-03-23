@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -g   -shared -Wl,-soname,XPCTcpSocket.so -o lib/XPCTcpSocket.so CMakeFiles/XPCTcpSocket.dir/src/pyXPCTcpSocket.cpp.o -L/usr/lib/libpython2.7.so -L/home/rgcofield/devel/MOOS2354/build/MOOSBin -lboost_system-mt -lboost_thread-mt -lpthread -lboost_python -lMOOS -lMOOSGen -lpython2.7 -Wl,-rpath,/usr/lib/libpython2.7.so:/home/rgcofield/devel/MOOS2354/build/MOOSBin 
