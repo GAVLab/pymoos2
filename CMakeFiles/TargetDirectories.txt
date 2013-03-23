@@ -1,4 +1,0 @@
-/home/rgcofield/devel/pymoos/CMakeFiles/CMOOSCommObject.dir
-/home/rgcofield/devel/pymoos/CMakeFiles/CMOOSCommPkt.dir
-/home/rgcofield/devel/pymoos/CMakeFiles/CMOOSMsg.dir
-/home/rgcofield/devel/pymoos/CMakeFiles/XPCTcpSocket.dir

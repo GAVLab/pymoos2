@@ -1,6 +1,0 @@
-/usr/local/lib/python2.7/dist-packages/pymoos/MOOSCommClient.py
-/usr/local/lib/python2.7/dist-packages/pymoos/__init__.py
-/usr/local/lib/python2.7/dist-packages/pymoos/CMOOSCommObject.so
-/usr/local/lib/python2.7/dist-packages/pymoos/CMOOSCommPkt.so
-/usr/local/lib/python2.7/dist-packages/pymoos/CMOOSMsg.so
-/usr/local/lib/python2.7/dist-packages/pymoos/XPCTcpSocket.so
